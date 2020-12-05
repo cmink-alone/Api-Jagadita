@@ -14,9 +14,9 @@
 
     try {
         $snapToken = Veritrans_Snap::getSnapToken(['transaction_details' => $transaction_details]);
-        return json_encode($snapToken);
+        echo json_encode($snapToken);
         // return ['code' => 1 , 'message' => 'success' , 'result' => $snapToken];
     } catch (\Exception $e) {
         dd($e);
-        return ['code' => 0 , 'message' => 'failed'];
+        echo ['code' => 0 , 'message' => 'failed'];
     }
