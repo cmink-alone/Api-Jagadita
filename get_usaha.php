@@ -6,7 +6,7 @@
     $str = "SELECT * FROM perusahaan WHERE id_pemilik='$id_pemilik'";
     $qry = $conn->query($str);
     if($qry){
-        $response = $query_intents->fetch_all(MYSQLI_ASSOC);
+        $response = $qry->fetch_all(MYSQLI_ASSOC);
     } else {
         $response = [];
     }
