@@ -1,1 +1,5 @@
-{}
+{
+    "require": {
+		"veritrans/veritrans-php": "dev-master"
+	}
+}
