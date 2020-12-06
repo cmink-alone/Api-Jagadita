@@ -63,10 +63,10 @@ $str = "UPDATE transaksi SET
 $qry = $conn->query($str);
 
 if($status=="berhasil"){    
-    $str = "SELECT id_perusahaan FROM transaksi WHERE midtrans_transaction_id='$transaction_id'";
+    $str = "SELECT id_perusahaan, total_beli FROM transaksi WHERE midtrans_transaction_id='$transaction_id'";
     $qry = $conn->query($str);
     $perusahaan = $qry->fetch_object();
 
-    $str = "UPDATE perusahaan SET total_saham+='$gross_amount' WHERE id='$perusahaan->id'";        
+    $str = "UPDATE perusahaan SET total_saham+='$perusahaan->total_beli' WHERE id='$perusahaan->id_perusahaan'";        
     $qry = $conn->query($str);
 }
