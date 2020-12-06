@@ -9,6 +9,7 @@ $notif = new \Midtrans\Notification();
 $transaction = $notif->transaction_status;
 $type = $notif->payment_type;
 $order_id = $notif->order_id;
+$gross_amount = $notif->gross_amount;
 $transaction_id = $notif->transaction_id;
 $fraud = $notif->fraud_status;
 
@@ -60,3 +61,12 @@ $str = "UPDATE transaksi SET
         status='$status'
         WHERE midtrans_transaction_id='$transaction_id'";        
 $qry = $conn->query($str);
+
+if($status=="berhasil"){    
+    $str = "SELECT id_perusahaan FROM transaksi WHERE midtrans_transaction_id='$transaction_id'";
+    $qry = $conn->query($str);
+    $perusahaan = $qry->fetch_object();
+
+    $str = "UPDATE perusahaan SET total_saham+='$gross_amount' WHERE id='$perusahaan->id'";        
+    $qry = $conn->query($str);
+}
