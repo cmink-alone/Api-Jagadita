@@ -1,5 +1,6 @@
 {
     "require": {
-		"veritrans/veritrans-php": "dev-master"
+		"veritrans/veritrans-php": "dev-master",
+        "midtrans/midtrans-php": "^2.3"
 	}
 }
