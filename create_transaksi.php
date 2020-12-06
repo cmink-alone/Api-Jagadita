@@ -9,6 +9,7 @@
     $total_beli = $json_data['total_beli'];
     $tanggal = date('Y-m-d');
     $status = $json_data['status'];
+    $midtrans_transaction_id = $json_data['midtrans_transaction_id'];
 
     $str = "INSERT INTO transaksi VALUES(
         NULL,
@@ -16,7 +17,8 @@
         '$id_pengguna',
         '$total_beli',
         '$tanggal',
-        '$status'
+        '$status',
+        '$midtrans_transaction_id'
     )";
     $qry = $conn->query($str);
     if($qry){
