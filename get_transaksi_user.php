@@ -3,8 +3,8 @@
 
     $id_pengguna = $_POST['id_pengguna'];
 
-    $str = "SELECT p.nama as nama_pembeli, t.total_beli, t.tanggal, status
-        FROM transaksi t INNER JOIN pengguna p ON t.id_pengguna = p.id 
+    $str = "SELECT p.nama as nama_perusahaan, t.total_beli, t.tanggal, status
+        FROM transaksi t INNER JOIN perusahaan p ON t.id_perusahaan = p.id 
         WHERE id_pengguna='$id_pengguna'";
     $qry = $conn->query($str);
     if($qry){
