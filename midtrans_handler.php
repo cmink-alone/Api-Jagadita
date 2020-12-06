@@ -67,6 +67,6 @@ if($status=="berhasil"){
     $qry = $conn->query($str);
     $perusahaan = $qry->fetch_object();
 
-    $str = "UPDATE perusahaan SET total_saham+='$perusahaan->total_beli' WHERE id='$perusahaan->id_perusahaan'";        
+    $str = "UPDATE perusahaan SET total_saham=total_saham+'$perusahaan->total_beli' WHERE id='$perusahaan->id_perusahaan'";        
     $qry = $conn->query($str);
 }
