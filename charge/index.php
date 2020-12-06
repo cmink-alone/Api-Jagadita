@@ -14,11 +14,11 @@ if( strpos($_SERVER['REQUEST_URI'], '/charge') === FALSE ) {
   http_response_code(404); 
   echo "wrong path, make sure it's `/charge`" . $_SERVER['REQUEST_URI']; exit();
 }
-// // Check if method is not HTTP POST, display 404
-// if( $_SERVER['REQUEST_METHOD'] !== 'POST'){
-//   http_response_code(404);
-//   echo "Page not found or wrong HTTP request method is used" . $_SERVER['REQUEST_METHOD']; exit();
-// }
+// Check if method is not HTTP POST, display 404
+if( $_SERVER['REQUEST_METHOD'] !== 'POST'){
+  http_response_code(404);
+  echo "Page not found or wrong HTTP request method is used" . $_SERVER['REQUEST_METHOD']; exit();
+}
 
 // get the HTTP POST body of the request
 $request_body = file_get_contents('php://input');
