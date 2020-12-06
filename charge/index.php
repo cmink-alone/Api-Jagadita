@@ -17,7 +17,7 @@ if( strpos($_SERVER['REQUEST_URI'], '/charge') === FALSE ) {
 // Check if method is not HTTP POST, display 404
 if( $_SERVER['REQUEST_METHOD'] !== 'POST'){
   http_response_code(404);
-  echo "Page not found or wrong HTTP request method is used"; exit();
+  echo "Page not found or wrong HTTP request method is used" . $_SERVER['REQUEST_METHOD']; exit();
 }
 
 // get the HTTP POST body of the request
