@@ -22,6 +22,10 @@
     )";
     $qry = $conn->query($str);
     if($qry){
+          if($status=='berhasil'){
+            $str = "UPDATE perusahaan SET total_saham=total_saham+'$total_beli' WHERE id='$id_perusahaan'";        
+            $qry = $conn->query($str);
+          }
         $response = array('status' => true,'message' => 'Berhasil melakukan transaksi', 'id' => $conn->insert_id);
     } else {
         $response = array('status' => false,'message' => 'Gagal melakukan transaksi');
