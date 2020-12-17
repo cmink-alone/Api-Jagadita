@@ -57,13 +57,23 @@ else if ($transaction == 'settlement'){
 
 
 
-$str = "UPDATE transaksi SET 
+$str = "SELECT id FROM transaksi WHERE midtrans_transaction_id='$transaction_id'";
+$qry = $conn->query($str);
+$found_in_trx = $qry->num_rows;
+
+if($found_in_trx){
+  $trx_type = "transaksi";
+} else {
+  $trx_type = "donasi";
+}
+
+$str = "UPDATE $trx_type SET 
         status='$status'
-        WHERE midtrans_transaction_id='$transaction_id'";        
+        WHERE midtrans_transaction_id='$transaction_id'";            
 $qry = $conn->query($str);
 
 if($status=="berhasil"){    
-    $str = "SELECT id_perusahaan, total_beli FROM transaksi WHERE midtrans_transaction_id='$transaction_id'";
+    $str = "SELECT id_perusahaan, total_beli FROM $trx_type WHERE midtrans_transaction_id='$transaction_id'";
     $qry = $conn->query($str);
     $perusahaan = $qry->fetch_object();
 
