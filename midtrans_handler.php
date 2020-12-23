@@ -73,15 +73,15 @@ $str = "UPDATE $trx_type SET
 $qry = $conn->query($str);
 
 if($status=="berhasil"){    
-    $str = "SELECT p.id, t.total_beli, p.total_saham, p.harga  FROM $trx_type t INNER JOIN perusahaan p ON t.id_perusahaan = p.id WHERE midtrans_transaction_id='$transaction_id'";
+    $str = "SELECT p.id, t.total_donasi, p.total_saham, p.harga  FROM $trx_type t INNER JOIN perusahaan p ON t.id_perusahaan = p.id WHERE midtrans_transaction_id='$transaction_id'";
     $qry = $conn->query($str);
     $perusahaan = $qry->fetch_object();
 
     $terpenuhi = 0;
-    IF($perusahaan->total_saham+$perusahaan->total_beli >= $perusahaan->harga){
+    IF($perusahaan->total_saham+$perusahaan->total_donasi >= $perusahaan->harga){
       $terpenuhi = 1;
     }
 
-    $str = "UPDATE perusahaan SET total_saham=total_saham+'$perusahaan->total_beli', terpenuhi='$terpenuhi' WHERE id='$perusahaan->id'";        
+    $str = "UPDATE perusahaan SET total_saham=total_saham+'$perusahaan->total_donasi', terpenuhi='$terpenuhi' WHERE id='$perusahaan->id'";        
     $qry = $conn->query($str);
 }
