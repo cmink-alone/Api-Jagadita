@@ -23,7 +23,16 @@
     $qry = $conn->query($str);
     if($qry){
           if($status=='berhasil'){
-            $str = "UPDATE perusahaan SET total_saham=total_saham+'$total_donasi' WHERE id='$id_perusahaan'";        
+            $str = "SELECT id, total_saham, harga FROM perusahaan WHERE id='$id_perusahaan'";
+            $qry = $conn->query($str);
+            $perusahaan = $qry->fetch_object();
+            
+            $terpenuhi = 0;
+            IF($perusahaan->total_saham+$total_donasi >= $perusahaan->harga){
+              $terpenuhi = 1;
+            }
+
+            $str = "UPDATE perusahaan SET total_saham=total_saham+'$total_donasi', terpenuhi='$terpenuhi' WHERE id='$id_perusahaan'";        
             $qry = $conn->query($str);
           }
         $response = array('status' => true,'message' => 'Berhasil melakukan donasi', 'id' => $conn->insert_id);
