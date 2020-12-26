@@ -5,6 +5,7 @@
 
     $str = "SELECT u.*, p.nama as nama_pemilik 
         FROM perusahaan u INNER JOIN pengguna p ON u.id_pemilik = p.id
+        WHERE NOT terpenuhi
         ORDER BY u.id";
     $qry = $conn->query($str);
     if($qry){
