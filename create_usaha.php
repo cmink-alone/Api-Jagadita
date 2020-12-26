@@ -31,6 +31,6 @@
         $response = array('status' => true,'message' => 'Berhasil mendaftarkan usaha', 'id' => $conn->insert_id);
     } else {
         $response = array('status' => false,'message' => 'Gagal mendaftarkan usaha');
-        $qry = $conn->query("INSERT INTO log VALUES(NULL, '$str')");
+        $qry = $conn->query("INSERT INTO `log` VALUES(NULL, '$str')");
     }
     echo json_encode($response);
