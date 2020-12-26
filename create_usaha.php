@@ -24,7 +24,9 @@
         '$deskripsi',
         '$kota',
         '$total_saham',
-        '$harga'
+        '$harga',
+        0,
+        0
     )";
     $qry = $conn->query($str);
     if($qry){
